@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adrian Macadangdang</title>
+  <meta name="description" content="Single‑page, terminal‑style portfolio built with Tailwind CSS." />
+  <!-- Tailwind Play CDN (great for a single file). For production, use the Tailwind CLI build. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            bg: '#0b0f14',
+            panel: '#0f141b',
+            line: '#1c2530',
+            accent: '#7aa2ff',
+            accent2: '#9d79ff',
+            muted: '#9fb2c7'
+          },
+          boxShadow: { glow: '0 10px 30px rgba(0,0,0,.35)' },
+          fontFamily: {
+            mono: [
+              'Consolas','Lucida Console','ui-monospace','SFMono-Regular','Menlo','Monaco','monospace'
+            ],
+            sans: [
+              'Inter','system-ui','-apple-system','Segoe UI','Roboto','Helvetica Neue','Arial','Noto Sans','sans-serif'
+            ]
+          },
+          maxWidth: { prose: '72ch' }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* minimal reset for smooth focus skipping */
+    .skip-link{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip-link:focus{ left:1rem; top:1rem; width:auto; height:auto; padding:.5rem .75rem; background:rgba(255,255,255,.06); border:1px solid #1c2530; border-radius:.5rem; }
+  </style>
+</head>
+<body class="h-full bg-bg text-white font-sans selection:bg-accent/30">
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-line/80 bg-bg/70 backdrop-blur">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="flex items-center justify-between py-3">
+        <div class="flex items-center gap-2 font-bold tracking-wide">
+          <span>Adrian Macadangdang</span>
+        </div>
+        <nav aria-label="Primary">
+          <ul class="flex gap-6 text-muted text-sm font-semibold">
+            <li><a class="hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent rounded" href="#contact">Contact Me</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="mx-auto max-w-6xl px-4">
+    <!-- Hero -->
+     <!-- Full-page center -->
+<section class="mx-auto max-w-6xl py-16">
+    <!-- Two-column layout: terminal left, cards right -->
+    <div class="grid items-start gap-8 md:grid-cols-[minmax(0,1fr)_380px]">
+      <!-- LEFT: Terminal Card (aligned left) -->
+      <div>
+        <div class="rounded-2xl border border-white/20 bg-zinc-950/70 shadow-glow [glow:2] ring-accent/15">
+          <!-- Title Bar -->
+          <div class="flex items-center justify-between rounded-t-2xl border-b border-white/20 bg-zinc-950/70 px-4 py-2">
+            <div class="flex items-center gap-2">
+              <span class="inline-flex gap-1">
+                <span class="h-3 w-3 rounded-full bg-red-500/80"></span>
+                <span class="h-3 w-3 rounded-full bg-amber-400/80"></span>
+                <span class="h-3 w-3 rounded-full bg-green-500/80"></span>
+              </span>
+              <span class="ml-3 select-none text-xs text-zinc-400 font-mono">guest@linux — bash</span>
+            </div>
+            <div class="hidden sm:flex items-center gap-2 text-[11px] text-zinc-400">
+         
+            </div>
+          </div>
+
+          <!-- Scrollable Body -->
+          <div class="h-[340px] md:h-[420px] overflow-y-auto px-4 py-4 selection:bg-emerald-500/30">
+            <!-- History examples (static) -->
+            <div class="space-y-3 font-mono text-[15px] leading-relaxed">
+              <div>
+                <span class="text-accent">guest@linux</span><span class="text-zinc-400">:</span><span class="text-emerald-400">~</span><span class="text-zinc-400">$</span>
+                <span class="ml-2 align-middle">mysite --greeting</span>
+            <pre class="font-mono whitespace-pre leading-[1.05] text-xs md:text-sm text-zinc-100 overflow-x-auto">
+ __      __       .__                             ._.
+/  \    /  \ ____ |  |   ____  ____   _____   ____| |
+\   \/\/   // __ \|  | /  ___\/  _ \ /     \_/ __ \ |
+ \        /\  ___/|  |_\  \__(  <_> )  Y Y  \  ___/\|
+  \__/\  /  \___  >____/\___  >____/|__|_|  /\___  >_
+       \/       \/          \/            \/     \/\/
+
+v.2.0.
+By Adrian Macadangdang
+</pre>
+              </div>
+
+              <div>
+                <span class="text-accent">guest@linux</span><span class="text-zinc-400">:</span><span class="text-emerald-400">~</span><span class="text-zinc-400">$</span>
+                <span class="ml-2 align-middle">sudo -u Adrian head -n 5 introduction.txt</span>
+                <pre class="mt-1 whitespace-pre-wrap text-sm text-zinc-300">"Hello! My name is Adrian and I look forward to chatting with you in the future. I know I'm just a name right now, but if you want to put a face to it, check out my project videos."</pre>
+              </div>
+
+              <!-- Current prompt with input (no JS) -->
+              <div class="flex items-start">
+                <span class="shrink-0 select-none pr-2">
+                  <span class="text-accent">guest@linux</span><span class="text-zinc-400">:</span><span class="text-emerald-400">~</span><span class="text-zinc-400">$</span>
+                </span>
+                <div class="flex-1 min-w-0 relative">
+                  <!-- Fake caret for empty state -->
+                  <span class="pointer-events-none absolute left-0 top-1/2 translate-y-1 h-4 w-px bg-accent animate-pulse [animation-duration:.8s]"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="rounded-b-2xl border-t border-white/10 px-4 py-2 text-[11px] text-zinc-400">
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Stacked cards (aligned right) -->
+      <div class="flex h-full flex-col justify-between gap-6">
+        <div class="h-full w-full md:w-[380px] rounded-xl border border-white/10 bg-panel p-5 ring-1 ring-white/5">
+          <div class="mb-2 text-xs text-zinc-400 font-mono text-right">adrian@linux:~/</div>
+          <pre class="font-mono text- leading-6 text-zinc-200 whitespace-pre-wrap">$ skills --show</pre>
+          <pre class="font-mono text-accent leading-6 whitespace-pre-wrap">
+  <a href="https://www.youtube.com/" class="mt-3 w-fit border-b border-dashed border-accent/40 font-mono text-accent hover:text-white">Elastic</a>    <a href="https://www.youtube.com/" class="mt-3 w-fit border-b border-dashed border-accent/40 font-mono text-accent hover:text-white">FTKImager</a> 
+  <a href="https://www.youtube.com/" class="mt-3 w-fit border-b border-dashed border-accent/40 font-mono text-accent hover:text-white">Splunk</a>     <a href="https://www.youtube.com/" class="mt-3 w-fit border-b border-dashed border-accent/40 font-mono text-accent hover:text-white">Registry Explorer</a> 
+  <a href="https://www.youtube.com/" class="mt-3 w-fit border-b border-dashed border-accent/40 font-mono text-accent hover:text-white">Wireshark</a>  <a href="https://www.youtube.com/" class="mt-3 w-fit border-b border-dashed border-accent/40 font-mono text-accent hover:text-white">Flacon</a> 
+  <a href="https://www.youtube.com/" class="w-fit border-b border-dashed border-accent/40 font-mono text-accent hover:text-white">Kape</a>       <a href="https://www.youtube.com/" class="mt-3 w-fit border-b border-dashed border-accent/40 font-mono text-accent hover:text-white">KnowBe4</a> 
+</pre>
+        </div>
+        <div class="ml-auto w-full md:w-[380px] rounded-xl border border-white/10 bg-panel p-5 ring-1 ring-white/5">
+          <div class="mb-2 text-xs text-zinc-400 font-mono text-right">adrian@linux:~/</div>
+          <pre class="font-mono leading-6 text-zinc-200 whitespace-pre-wrap">$ certs --show
+</pre>
+<pre class="mt-1 whitespace-pre-wrap text-zinc-300">
+  CompTIA              TryHackMe         
+  - CySA               - SAL 1
+  - Security+
+  - Network+
+  - A+ 
+</pre>
+        </div>
+      </div>
+    </div>
+  </mono>
+
+    <!-- Projects -->
+    <section id="projects" class="py-8">
+      <p class="font-mono text-xl text-accent">adrian@linux:~/<span class="text-xl text-emerald-400">projects</span>$ <span class="text-xl text-white">ls</span></p>
+      <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Card -->
+        <article class="flex min-h-32 flex-col justify-between rounded-lg border border-line bg-panel p-4 transition-transform duration-300 ease-in-out hover:-translate-y-2
+         motion-reduce:transition-none motion-reduce:transform-none">
+          <div>
+            <h3 class="text-lg font-semibold">Snort Inline Lab</h3>
+            <p class="mt-1 max-w-prose text-sm text-muted">Inline IPS between attacker/victim VMs. Rules, PCAPs, reporting.</p>
+          </div>
+          <p class="mt-3 w-fit border-b border-dashed border-accent/40 font-semibold text-accent">watch now →</p>
+        </article>
+        <article class="flex min-h-32 flex-col justify-between rounded-lg border border-line bg-panel p-4 transition-transform duration-300 ease-in-out hover:-translate-y-2
+         motion-reduce:transition-none motion-reduce:transform-none">
+          <div>
+            <h3 class="text-lg font-semibold">Mailsleuth CLI</h3>
+            <p class="mt-1 max-w-prose text-sm text-muted">Parse headers, SPF/DKIM/DMARC verdicts, IOC extraction.</p>
+          </div>
+          <p class="mt-3 w-fit border-b border-dashed border-accent/40 font-semibold text-accent">watch now →</p>
+        </article>
+        <article class="flex min-h-32 flex-col justify-between rounded-lg border border-line bg-panel p-4 transition-transform duration-300 ease-in-out hover:-translate-y-2
+         motion-reduce:transition-none motion-reduce:transform-none">
+          <div>
+            <h3 class="text-lg font-semibold">Elastic Hunting</h3>
+            <p class="mt-1 max-w-prose text-sm text-muted">Saved queries for PsExec, Cobalt Strike, DNS tunneling.</p>
+          </div>
+          <p class="mt-3 w-fit border-b border-dashed border-accent/40 font-semibold text-accent">watch now →</p>
+        </article>
+        <article class="flex min-h-32 flex-col justify-between rounded-lg border border-line bg-panel p-4 transition-transform duration-300 ease-in-out hover:-translate-y-2
+         motion-reduce:transition-none motion-reduce:transform-none">
+          <div>
+            <h3 class="text-lg font-semibold">Volatility Playbook</h3>
+            <p class="mt-1 max-w-prose text-sm text-muted">Automated plugins + Jupyter summaries for mem forensics.</p>
+          </div>
+          <p class="mt-3 w-fit border-b border-dashed border-accent/40 font-semibold text-accent">watch now →</p>
+        </article>
+        <article class="flex min-h-32 flex-col justify-between rounded-lg border border-line bg-panel p-4 transition-transform duration-300 ease-in-out hover:-translate-y-2
+         motion-reduce:transition-none motion-reduce:transform-none">
+          <div>
+            <h3 class="text-lg font-semibold">ZeroTier Analysis</h3>
+            <p class="mt-1 max-w-prose text-sm text-muted">IR case study: persistence, traffic profiles, detections.</p>
+          </div>
+          <p class="mt-3 w-fit border-b border-dashed border-accent/40 font-semibold text-accent">watch now →</p>
+        </article>
+        <article class="flex min-h-32 flex-col justify-between rounded-lg border border-line bg-panel p-4 transition-transform duration-300 ease-in-out hover:-translate-y-2
+         motion-reduce:transition-none motion-reduce:transform-none">
+          <div>
+            <h3 class="text-lg font-semibold">CrowdStrike Tuning</h3>
+            <p class="mt-1 max-w-prose text-sm text-muted">Policy baselines + alert triage flow for a 2,500‑seat org.</p>
+          </div>
+          <p class="mt-3 w-fit border-b border-dashed border-accent/40 font-semibold text-accent">watch now →</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- About -->
+      <section id="about" class="py-6">
+    <p class="font-mono text-xl text-accent">
+      adrian@linux:~/desktop$ <span class="text-xl text-white">cat</span>
+      <span class="text-xl text-emerald-400">about_me.rtf</span>
+    </p>
+
+    <div class="mt-4 grid gap-6 rounded-lg border border-line bg-panel p-6 md:grid-cols-2">
+      <!-- LEFT: text -->
+      <div>
+        <p class="max-w-prose text-lg">Enterprise IT >> Cybersecurity</p>
+
+        <p class="mt-3 max-w-prose text-muted">
+          I'm a young professional who’s cut my teeth on enterprise IT as the second-most-senior member of a five-person team, responsible for supporting over 2,000 users. We have a wide range of responsibilities, spanning end-user support, asset management, supporting clinical technologies, and security and access management.
+        </p>
+
+        <p class="mt-3 max-w-prose text-muted">
+          We’re the tip of the spear and the Swiss Army knife, striving to provide an excellent user experience and dependable support to our senior engineers and administrators.
+        </p>
+
+        <p class="mt-3 max-w-prose text-muted">
+          Over the past two years I've studied IT fundamentals and developed solid core professional skills. In that time I've also earned a number of certifications and, most importantly, gained hands-on-experience. I find Cybersecurity extremely fascinating (YW5kIHN1cGVyIGJhZGFzcw==) and hope to move into the field soon.
+        </p>
+      </div>
+
+      <!-- RIGHT: image -->
+      <figure class="md:justify-self-end">
+        <div class="overflow-hidden rounded-xl border border-white/10 bg-black/20 ring-1 ring-white/5">
+          <img src="test.jpg" alt="" class="w-full max-w-xs h-auto rounded-lg" />
+        </div>
+        <!-- optional caption -->
+        <!-- <figcaption class="mt-2 text-xs text-muted">Caption here</figcaption> -->
+      </figure>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-line/80">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="flex items-center justify-between gap-4 py-6 text-sm text-muted">
+        <small>© <span id="y"></span> Adrian Macadangdang</small>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+</body>
+</html>
